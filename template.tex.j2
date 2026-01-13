@@ -1,0 +1,146 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- Minimal packages ---
+\usepackage[a4paper,margin=1.6cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+
+\setlist[itemize]{leftmargin=*,noitemsep,topsep=2pt}
+\pagenumbering{gobble}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+% --- Simple layout helpers ---
+\newcommand{\cvsection}[1]{%
+  \vspace{8pt}%
+  {\large\textbf{#1}}\par
+  \vspace{2pt}\hrule\vspace{6pt}
+}
+
+% Left title + right date on same line
+\newcommand{\cventry}[2]{%
+  \textbf{#1}\hfill #2\par
+}
+
+% Small separators for header
+\newcommand{\sep}{\enspace|\enspace}
+
+\begin{document}
+
+% ===================== HEADER =====================
+{\LARGE\textbf{\VAR{name}}}\par
+\VAR{title}\par
+\VAR{location}\par
+
+{\small
+\BLOCK{ if email }\href{mailto:\VAR{email}}{\VAR{email}}\BLOCK{ endif }
+\BLOCK{ if phone }\sep \VAR{phone}\BLOCK{ endif }
+\BLOCK{ if website }\sep \href{\VAR{website|normalize_url}}{\VAR{website|url_display}}\BLOCK{ endif }
+\BLOCK{ if linkedin }\sep \href{https://www.linkedin.com/in/\VAR{linkedin}}{linkedin.com/in/\VAR{linkedin}}\BLOCK{ endif }
+\BLOCK{ if github }\sep \href{https://github.com/\VAR{github}}{github.com/\VAR{github}}\BLOCK{ endif }
+}\par
+
+
+
+% ===================== SUMMARY =====================
+\BLOCK{ if summary }
+\cvsection{Resumo}
+\VAR{summary|escape_latex}
+\BLOCK{ endif }
+% ===================== EXPERIENCE =====================
+\BLOCK{ if experience and experience|length > 0 }
+\cvsection{Experiência}
+
+\BLOCK{ for e in experience }
+\cventry{\VAR{e.position|escape_latex}}{\VAR{e.start_date|escape_latex} -- \BLOCK{ if e.end_date }\VAR{e.end_date|escape_latex}\BLOCK{ else }Atual\BLOCK{ endif }}
+\VAR{e.company|escape_latex}  (\VAR{e.location|escape_latex})
+\BLOCK{ if e.description and e.description|length > 0 }
+\begin{itemize}
+  \BLOCK{ for b in e.description }
+  \item \VAR{b|escape_latex}
+  \BLOCK{ endfor }
+\end{itemize}
+\BLOCK{ endif }
+
+\BLOCK{ endfor }
+\BLOCK{ endif }
+
+% ===================== EDUCATION =====================
+\BLOCK{ if education and education|length > 0 }
+\cvsection{Formação}
+
+\BLOCK{ for ed in education }
+\cventry{\VAR{ed.degree|escape_latex}}{\VAR{ed.start_date|escape_latex} -- \VAR{ed.end_date|escape_latex}}
+\VAR{ed.institution|escape_latex} (\VAR{ed.location|escape_latex})
+\BLOCK{ if ed.gpa }
+\par \textit{GPA:} \VAR{ed.gpa|escape_latex}
+\BLOCK{ endif }
+\par
+\BLOCK{ endfor }
+\BLOCK{ endif }
+
+% ===================== SKILLS =====================
+\BLOCK{ if skills }
+\cvsection{Habilidades}
+
+\BLOCK{ if skills.languages and skills.languages|length > 0 }
+\textbf{Linguagens:} \VAR{skills.languages|join(", ")|escape_latex}\par
+\BLOCK{ endif }
+
+\BLOCK{ if skills.frameworks and skills.frameworks|length > 0 }
+\textbf{Frameworks:} \VAR{skills.frameworks|join(", ")|escape_latex}\par
+\BLOCK{ endif }
+
+\BLOCK{ if skills.tools and skills.tools|length > 0 }
+\textbf{Ferramentas:} \VAR{skills.tools|join(", ")|escape_latex}\par
+\BLOCK{ endif }
+
+\BLOCK{ if skills.other and skills.other|length > 0 }
+\textbf{Outros:} \VAR{skills.other|join(", ")|escape_latex}
+\BLOCK{ endif }
+\BLOCK{ endif }
+
+% ===================== PROJECTS =====================
+\BLOCK{ if projects and projects|length > 0 }
+\cvsection{Projetos}
+
+\BLOCK{ for p in projects }
+\textbf{\VAR{p.name|escape_latex}} (\VAR{p.description|escape_latex})\par
+\BLOCK{ if p.tech and p.tech|length > 0 }
+\textit{Tecnologias:} \VAR{p.tech|join(", ")|escape_latex}\par
+\BLOCK{ endif }
+\BLOCK{ if p.url }
+\href{\VAR{p.url|normalize_url}}{\VAR{p.url|url_display}}
+\BLOCK{ endif }
+\par\vspace{4pt}
+\BLOCK{ endfor }
+\BLOCK{ endif }
+
+% ===================== CERTIFICATIONS =====================
+\BLOCK{ if certifications and certifications|length > 0 }
+\cvsection{Certificações}
+
+\BLOCK{ for c in certifications }
+\cventry{\VAR{c.name|escape_latex} — \VAR{c.issuer|escape_latex}}{\VAR{c.date|escape_latex}}
+\BLOCK{ if c.url }
+\href{\VAR{c.url|normalize_url}}{\VAR{c.url|url_display}}
+\BLOCK{ endif }
+\par
+\BLOCK{ endfor }
+\BLOCK{ endif }
+
+% ===================== LANGUAGES =====================
+\BLOCK{ if languages and languages|length > 0 }
+\cvsection{Idiomas}
+\begin{itemize}
+  \BLOCK{ for lang in languages }
+  \item \VAR{lang.name|escape_latex} — \VAR{lang.level|escape_latex}
+  \BLOCK{ endfor }
+\end{itemize}
+\BLOCK{ endif }
+
+\end{document}

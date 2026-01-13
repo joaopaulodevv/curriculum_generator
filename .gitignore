@@ -1,0 +1,9 @@
+out/
+*.pdf
+*.tex
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+cv.yaml
