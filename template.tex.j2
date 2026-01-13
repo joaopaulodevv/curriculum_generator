@@ -109,7 +109,7 @@
 \cvsection{Projetos}
 
 \BLOCK{ for p in projects }
-\textbf{\VAR{p.name|escape_latex}} (\VAR{p.description|escape_latex})\par
+\textbf{\VAR{p.name|escape_latex}}\par \VAR{p.description|escape_latex}\par
 \BLOCK{ if p.tech and p.tech|length > 0 }
 \textit{Tecnologias:} \VAR{p.tech|join(", ")|escape_latex}\par
 \BLOCK{ endif }
@@ -125,7 +125,7 @@
 \cvsection{Certificações}
 
 \BLOCK{ for c in certifications }
-\cventry{\VAR{c.name|escape_latex} — \VAR{c.issuer|escape_latex}}{\VAR{c.date|escape_latex}}
+\cventry{\VAR{c.name|escape_latex} - \VAR{c.issuer|escape_latex}}{\VAR{c.date|escape_latex}}
 \BLOCK{ if c.url }
 \href{\VAR{c.url|normalize_url}}{\VAR{c.url|url_display}}
 \BLOCK{ endif }
@@ -138,7 +138,7 @@
 \cvsection{Idiomas}
 \begin{itemize}
   \BLOCK{ for lang in languages }
-  \item \VAR{lang.name|escape_latex} — \VAR{lang.level|escape_latex}
+  \item \VAR{lang.name|escape_latex} - \VAR{lang.level|escape_latex}
   \BLOCK{ endfor }
 \end{itemize}
 \BLOCK{ endif }

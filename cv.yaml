@@ -1,0 +1,100 @@
+name: João Paulo Soares Lopes
+title: Estudante de Engenharia da Computação
+email: joaopaulo.solopes@gmail.com
+location: Rio de Janeiro, Brasil
+#website: https://joaopaulo.dev
+linkedin: joão-paulo-lopes-5577ba302/
+github: joaopaulodevv
+
+#summary: >
+ # Desenvolvedor de software com experiência em desenvolvimento web e sistemas distribuídos.
+  #Focado em código limpo, arquitetura escalável e boas práticas de engenharia.
+
+experience:
+  - company: StoneLab (Laboratório da Fintech Stone na PUC-Rio)
+    position: Estagiário de Pesquisa e Engenharia de Software
+    location: Rio de Janeiro, Brasil
+    start_date: 09/2025
+    end_date: null   # null = atual
+    description:
+      - Apliquei Langchain a um framework de documentação de versionamento de código no github automatizado.
+      - Orquestrei o Framework para trabalhar com múltiplos LLMs (GPT-4, Gemini, etc) como agentes usando tools para maximizar métricas.
+      - Exercitei técnicas de engenharia de prompt para melhorar a performance dos LLMs.
+  - company: Grisk Energy
+    position: Desenvolvedor Full Stack
+    location: Rio de Janeiro, Brasil
+    start_date: 01/2025
+    end_date: 09/2025
+    description:
+      - Desenvolvi uma plataforma web para monitoramento e análise de dados de consumo energético.
+      - Implementei dashboards e gráficos interativos e complexos utilizando Django e Plotly.
+      - Utilizei Docker , Celery e Redis para garantir que tarefas pesadas fossem processadas de forma assíncrona.
+  - company: Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio)
+    position: Monitor de Modelagem e Programação (Python)
+    location: Rio de Janeiro, Brasil
+    start_date: 08/2023
+    end_date: 12/2023
+    description:
+      - Auxiliei alunos na compreensão de conceitos fundamentais de lógica de programação e modelagem computacional.
+      - Realizei sessões de tutoria individualizadas para atender à necessidades específicas dos alunos, preparando materiais didáticos e exercícios práticos para reforçar o aprendizado.
+
+education:
+  - institution: Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio)
+    degree: Bacharelado em Engenharia da Computação
+    location: Rio de Janeiro, Brasil
+    start_date: 01/2024
+    end_date: 12/2028
+    gpa: null   # opcional
+
+skills:
+  languages:
+    - Python
+    - JavaScript
+    - TypeScript
+    - C
+    - SQL
+    - Assembly (X86 64)
+  frameworks:
+    - Django
+    - Django Rest Framework
+    - React
+    - Langchain
+  tools:
+    - Docker
+    - PostgreSQL
+    - Redis
+    - Git
+  other:
+    - Scrum
+    - CI/CD
+    - AWS
+    - Linux
+
+projects:
+  - name: Webknowledge
+    description: Plataforma web para facilitar acessibilidade na área da educação, com foco em filtrar e facilitar encontro de professores especializados em certas individualidades.
+    url: https://github.com/joaopaulodevv/Webknowledge
+    tech:
+      - Python
+      - Django
+
+  - name: Basic-Assembly-X86-64-Compiler
+    description: Compilador simples escrito em C que injeta código Assembly X86 64 para interpretar uma linguagem customizada, que conta com condicionais, jumps e operações aritméticas básicas.
+    url: https://github.com/joaopaulodevv/Assembly-X86-64-Compiler
+    tech:
+      - C
+      - Assembly(X86 64)
+
+certifications:
+  - name: Cambridge Certificate in Advanced English (CAE)
+    issuer: University of Cambridge
+    date: 2024-01
+    url: null
+
+languages:
+  - name: Português
+    level: Nativo
+  - name: Inglês
+    level: Fluente
+  - name: Espanhol
+    level: Básico
